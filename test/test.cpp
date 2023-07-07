@@ -1,5 +1,5 @@
 #include "embed.hpp"
-#include "operators.hpp"
+#include "groups.hpp"
 
 #include <type_traits>
 
@@ -41,5 +41,21 @@ static_assert(
     lk::traits::none_v<std::is_polymorphic, float, bool, char, double, int>);
 static_assert(!lk::traits::none_v<std::is_polymorphic, BasePolymorphic, float,
                                   bool, char, double, int>);
+
+// All together now
+// Checks if any of the types are int
+static_assert(lk::traits::any_v<lk::traits::embed<std::is_same, int>::front,
+                                int, bool, char, float>);
+// Checks if all of the types are int
+static_assert(!lk::traits::all_v<lk::traits::embed<std::is_same, int>::front,
+                                 int, bool, char, float>);
+// Checks if all of the types are derived from BasePolymorphic
+static_assert(!lk::traits::all_v<
+              lk::traits::embed<std::is_base_of, BasePolymorphic>::front,
+              DerivedPolymorphic, int, bool, char>);
+// Checks if any of the types are derived from BasePolymorphic
+static_assert(lk::traits::any_v<
+              lk::traits::embed<std::is_base_of, BasePolymorphic>::front,
+              DerivedPolymorphic, int, bool, char>);
 
 int main() {}
