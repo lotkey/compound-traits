@@ -13,7 +13,7 @@ Type traits with type traits as template parameters.
 - `all`
 - `none`
 
-Each of these type traits contain a `static constexpr bool` named `value`. Each type trait takes a type trait (`template <typename> typename Trait`) and a list of types (`typename Types...`) as its parameters. If the type list is empty, `value` is true.
+Each of these type traits contain a `static constexpr bool` named `value`. Each type trait takes a type trait (`template <typename> typename Trait`) and a list of types (`typename Types...`) as its parameters. If the type list is empty, `value` is `true`.
 
 ### `all`
 
