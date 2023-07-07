@@ -8,3 +8,8 @@ include_directories(${SRC})
 add_executable(test
     ${TEST}/test.cpp
 )
+
+install(
+    FILES ${SRC}/embed.hpp ${SRC}/groups.hpp
+    DESTINATION include/lk/traits
+)
